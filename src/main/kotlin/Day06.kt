@@ -7,28 +7,16 @@ fun main() {
     println("part two: ${partTwo(input)}")
 }
 
-private fun partOne(input: File): Int {
-    input.readLines()
-        .first()
-        .windowed(4)
-        .map { it.toSet() }
-        .forEachIndexed { index, window ->
-            if (window.size == 4) {
-                return index + 4
-            }
-        }
-    return -1
-}
+private fun partOne(input: File) = input.readText()
+    .windowed(4)
+    .map { it.toSet() }
+    .indexOfFirst {
+        it.size == 4
+    } + 4
 
-private fun partTwo(input: File): Int {
-    input.readLines()
-        .first()
-        .windowed(14)
-        .map { it.toSet() }
-        .forEachIndexed { index, window ->
-            if (window.size == 14) {
-                return index + 14
-            }
-        }
-    return -1
-}
+private fun partTwo(input: File) = input.readText()
+    .windowed(14)
+    .map { it.toSet() }
+    .indexOfFirst {
+        it.size == 14
+    } + 14
